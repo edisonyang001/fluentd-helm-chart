@@ -1,0 +1,17 @@
+apiVersion: v1
+appVersion: 1.11.1
+description: Helm chart for Fluentd running as an aggregation stateful set.
+home: https://www.fluentd.org/
+icon: https://raw.githubusercontent.com/fluent/fluentd-docs/master/public/logo/Fluentd_square.png
+keywords:
+- fluent
+- fluentd
+- logging
+maintainers:
+- email: steve.hipwell@gmail.com
+  name: stevehipwell
+name: fluentd
+sources:
+- https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/fluentd-elasticsearch/fluentd-es-image
+- https://quay.io/repository/fluentd_elasticsearch/fluentd
+version: 1.1.0

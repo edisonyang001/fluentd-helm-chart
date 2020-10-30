@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: flunetd-job
+spec:
+  template:
+    spec:
+      containers:
+        - name: job
+          image: registry.cn-shanghai.aliyuncs.com/yang-hub/opencontent-init-container:v2
+          command: ["/bin/bash", "-c", "/opencontent/init.sh"]
+          volumeMounts:
+            - name: flunentd-job-config
+              mountPath: /opencontent
+      env:
+        - name: F_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+      restartPolicy: Never
+      volumes:
+        - name: flunentd-job-config
+          configMap:
+            name: fluentd-job-configmap
+            defaultMode: 0555
